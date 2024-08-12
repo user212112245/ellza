@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Plan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .exercise {
+            margin: 20px 0;
+        }
+        .exercise img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+            width: 300px; /* Set lebar tetap */
+            height: 200px; /* Set tinggi tetap */
+            object-fit: cover; /* Menjaga proporsi gambar */
+        }
+        .navigation {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .navigation button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        .navigation button:hover {
+            background-color: #2980b9;
+        }
+        .timer, .progress {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .timer button {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .timer button:hover {
+            background-color: #c0392b;
+        }
+        .progress {
+            margin-top: 40px;
+        }
+        .progress input[type="number"] {
+            width: 50px;
+            text-align: center;
+        }
+        .day {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Workout Plan</h1>
+
+    <div class="navigation">
+        <button onclick="showDay('tuesday')">Selasa</button>
+        <button onclick="showDay('wednesday')">Rabu</button>
+        <button onclick="showDay('friday')">Jumat</button>
+        <button onclick="showDay('saturday')">Sabtu</button>
+        <button onclick="showDay('sunday')">Minggu</button>
+    </div>
+
+    <!-- Tuesday: Chest & Triceps -->
+    <div id="tuesday" class="day">
+        <h2>Selasa: Chest & Triceps</h2>
+        <div class="exercise">
+            <h3>Push-Ups</h3>
+            <p>4 set x 12-15 repetisi</p>
+            <img src="push up.gif" alt="Push-Ups Animation">
+        </div>
+        <div class="exercise">
+            <h3>Dumbbell Bench Press</h3>
+            <p>4 set x 8-12 repetisi</p>
+            <img src="Dumbbell Bench Press.gif" alt="Dumbbell Bench Press Animation">
+        </div>
+        <div class="exercise">
+            <h3>Dumbbell Flyes</h3>
+            <p>4 set x 8-12 repetisi</p>
+            <img src="Dumbbell Flyes.gif" alt="Dumbbell Flyes Animation">
+        </div>
+        <div class="exercise">
+            <h3>Triceps Dips</h3>
+            <p>3 set x 10-12 repetisi</p>
+            <img src="Triceps Dips.gif" alt="Triceps Dips Animation">
+        </div>
+        <div class="exercise">
+            <h3>Dumbbell Overhead Triceps Extension</h3>
+            <p>3 set x 8-12 repetisi</p>
+            <img src="Dumbbell Overhead Triceps Extension.gif" alt="Dumbbell Overhead Triceps Extension Animation">
+        </div>
+    </div>
+
+    <!-- Wednesday: Back & Biceps -->
+    <div id="wednesday" class="day">
+        <h2>Rabu: Back & Biceps</h2>
+        <div class="exercise">
+            <h3>Pull-Ups</h3>
+            <p>4 set x sebanyak mungkin repetisi (AMRAP)</p>
+            <img src="Pull-Ups.gif" alt="Pull-Ups Animation">
+        </div>
+        <div class="exercise">
+            <h3>Dumbbell Rows</h3>
+            <p>4 set x 8-12 repetisi per sisi</p>
+            <img src="Dumbbell Rows.gif" alt="Dumbbell Rows Animation">
+        </div>
+        <div class="exercise">
+            <h3>Dumbbell Deadlifts</h3>
+            <p>3 set x 8-12 repetisi</p>
+            <img src="Dumbbell Deadlifts.gif" alt="Dumbbell Deadlifts Animation">
+        </div>
+        <div class="exercise">
+            <h3>Dumbbell Bicep Curls</h3>
+            <p>4 set x 8-12 repetisi</p>
+            <img src="Dumbbell Bicep Curls.gif" alt="Dumbbell Bicep Curls Animation">
+        </div>
+        <div class="exercise">
+            <h3>Hammer Curls</h3>
+            <p>3 set x 8-12 repetisi</p>
+            <img src="Hammer Curls.gif" alt="Hammer Curls Animation">
+        </div>
+    </div>
+
+    <!-- Friday: Core and Lower Body -->
+    <div id="friday" class="day">
+        <h2>Jumat: Core & Lower Body</h2>
+        <div class="exercise">
+            <h3>Dumbbell Squats</h3>
+            <p>4 set x 10-15 repetisi</p>
+            <img src="Dumbbell Squats.gif" alt="Dumbbell Squats Animation">
+        </div>
+        <div class="exercise">
+            <h3>Lunges</h3>
+            <p>3 set x 12 repetisi per sisi</p>
+            <img src="Lunges.gif" alt="Lunges Animation">
+        </div>
+        <div class="exercise">
+            <h3>Leg Raises</h3>
+            <p>3 set x 12-15 repetisi</p>
+            <img src="Leg Raises.gif" alt="Leg Raises Animation">
+        </div>
+        <div class="exercise">
+            <h3>Plank</h3>
+            <p>3 set x tahan selama 30-60 detik</p>
+            <img src="Plank.gif" alt="Plank Animation">
+        </div>
+    </div>
+
+    <!-- Saturday: Chest & Back Combination -->
+    <div id="saturday" class="day">
+        <h2>Sabtu: Chest & Back Combination</h2>
+        <div class="exercise">
+            <h3>Push-Ups</h3>
+            <p>4 set x 12-15 repetisi</p>
+            <img src="push up.gif" alt="Push-Ups Animation">
+        </div>
+        <div class="exercise">
+            <h3>Pull-Ups</h3>
+            <p>4 set x sebanyak mungkin repetisi</p>
+            <img src="Pull-Ups.gif" alt="Pull-Ups Animation">
+        </div>
+        <div class="exercise">
+            <h3>Dumbbell Bench Press</h3>
+            <p>3 set x 8-12 repetisi</p>
+            <img src="Dumbbell Bench Press.gif" alt="Dumbbell Bench Press Animation">
+        </div>
+        <div class="exercise">
+            <h3>Dumbbell Rows</h3>
+            <p>3 set x 8-12 repetisi per sisi</p>
+            <img src="Dumbbell Rows.gif" alt="Dumbbell Rows Animation">
+        </div>
+    </div>
+
+    <!-- Sunday: Full Body Conditioning -->
+    <div id="sunday" class="day">
+        <h2>Minggu: Full Body Conditioning</h2>
+        <div class="exercise">
+            <h3>Burpees</h3>
+            <p>4 set x 10 repetisi</p>
+            <img src="burpees.gif" alt="Burpees Animation">
+        </div>
+        <div class="exercise">
+            <h3>Mountain Climbers</h3>
+            <p>3 set x 30 detik</p>
+            <img src="Mountain Climbers.gif" alt="Mountain Climbers Animation">
+        </div>
+        <div class="exercise">
+            <h3>Dumbbell Clean and Press</h3>
+            <p>3 set x 8-10 repetisi</p>
+            <img src="Dumbbell Clean and Press.gif" alt="Dumbbell Clean and Press Animation">
+        </div>
+        <div class="exercise">
+            <h3>Bodyweight Squats</h3>
+            <p>3 set x 15-20 repetisi</p>
+            <img src="Bodyweight Squats.gif" alt="Bodyweight Squats Animation">
+        </div>
+    </div>
+
+    <div class="timer">
+        <h2>Set Timer</h2>
+        <button onclick="startTimer()">Mulai Timer</button>
+        <button onclick="pauseTimer()">Jeda Timer</button>
+        <button onclick="endTimer()">Akhiri Timer</button>
+        <p id="time">00:00</p>
+    </div>
+
+    <div class="progress">
+        <h2>Progress Tracker</h2>
+        <p>Weight Lifted: <input type="number" id="weight" placeholder="kg"> kg</p>
+        <button onclick="saveProgress()">Save Progress</button>
+        <p id="progressMessage"></p>
+    </div>
+</div>
+
+<script>
+    function showDay(dayId) {
+        var days = document.getElementsByClassName('day');
+        for (var i = 0; i < days.length; i++) {
+            days[i].style.display = 'none';
+        }
+        document.getElementById(dayId).style.display = 'block';
+    }
+
+    let timer;
+    let seconds = 0;
+    let minutes = 0;
+
+    function updateTimerDisplay() {
+        document.getElementById('time').textContent =
+            (minutes < 10 ? "0" + minutes : minutes) + ":" + 
+            (seconds < 10 ? "0" + seconds : seconds);
+    }
+
+    function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(function() {
+            seconds++;
+            if (seconds == 60) {
+                seconds = 0;
+                minutes++;
+            }
+            updateTimerDisplay();
+        }, 1000);
+    }
+
+    function pauseTimer() {
+        clearInterval(timer);
+    }
+
+    function endTimer() {
+        clearInterval(timer);
+        seconds = 0;
+        minutes = 0;
+        updateTimerDisplay();
+    }
+
+    function saveProgress() {
+    const weight = document.getElementById('weight').value;
+    if (weight) {
+        // Simpan data ke localStorage
+        localStorage.setItem('lastWeight', weight);
+        document.getElementById('progressMessage').textContent = "Progress saved: " + weight + " kg lifted!";
+    } else {
+        document.getElementById('progressMessage').textContent = "Please enter the weight lifted.";
+    }
+}
+
+// Untuk memuat kembali data saat halaman di-refresh
+window.onload = function() {
+    const lastWeight = localStorage.getItem('lastWeight');
+    if (lastWeight) {
+        document.getElementById('weight').value = lastWeight;
+        document.getElementById('progressMessage').textContent = "Last saved weight: " + lastWeight + " kg";
+    }
+}
+
+</script>
+
+</body>
+</html>
